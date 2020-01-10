@@ -17,3 +17,24 @@
 .bar.sorted {
   background-color: lawngreen;
 }
+
+.commands {
+  position: absolute;
+  bottom: 0em;
+  background-color: indigo;
+  display: flex;
+  padding: 3em 0em;
+  width: 100%;
+}
+
+.command-button {
+  background-color: white;
+  padding: 1em 0.7em;
+  margin: 0.5em 2em;
+  color: indigo;
+  border: 1px solid white;
+}
+
+.slider {
+  margin: 0em 1em;
+}
