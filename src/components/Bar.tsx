@@ -12,7 +12,7 @@ const Bar: React.FC<BarProps> = ({ value, current, sorted }) => {
         <React.Fragment>
             <div
                 className={`bar ${current ? "current" : ""} ${sorted ? "sorted" : ""}`}
-                style={{ height: (value * 0.5).toString() + "em" }}
+                style={{ height: (value * 0.4).toString() + "em" }}
             />
         </React.Fragment>
     )
