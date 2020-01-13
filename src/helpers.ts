@@ -1,9 +1,9 @@
-import { ArrayNode } from './types/ArrayNode'
+import { ArrayItem } from './types/ArrayItem'
 
-export const generateNodes = (num: number): Array<ArrayNode> => {
-    let generatedNodes: Array<ArrayNode> = []
+export const generateItems = (num: number): Array<ArrayItem> => {
+    let generatedNodes: Array<ArrayItem> = []
     for (let i = 0; i < num; i++) {
-        let node: ArrayNode;
+        let node: ArrayItem;
         node = {
             index: i,
             value: Math.round(Math.random() * 100),

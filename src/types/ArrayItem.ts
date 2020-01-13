@@ -1,4 +1,4 @@
-export type ArrayNode = {
+export type ArrayItem = {
     index: number,
     value: number,
     current: boolean,

@@ -6,45 +6,46 @@ import Controls from './Controls'
 
 // Helper functions
 import bubbleSort from '../sorts'
-import { generateNodes } from '../helpers'
+import { generateItems } from '../helpers'
 
 // Custom data types
-import { ArrayNode } from '../types/ArrayNode'
+import { ArrayItem } from '../types/ArrayItem'
 
 
 const SortingVisualizer: React.FC = () => {
-    const STARTING_NODES = 100;
+    const STARTING_ITEMS_NUM = 100;
 
-    const tempNodes: Array<ArrayNode> = []
-    const [nodes, setNodes] = useState(tempNodes);
+    const tempItems: Array<ArrayItem> = []
+    const [items, setItems] = useState(tempItems);
 
     // TODO: Add sorted function
 
     useEffect(() => {
-        setNodes(generateNodes(STARTING_NODES));
+        setItems(generateItems(STARTING_ITEMS_NUM));
     }, [])
 
     const bubbleSortHandler = () => {
-        let i = 0;
-        for (let partialResult of bubbleSort(nodes)) {
-            i++;
-            let sorted = [...partialResult.values()]
-            setTimeout(() => {
-                setNodes(sorted);
-            }, i * 0.1)
-        }
+        bubbleSort(items, setItems)
+        // let i = 0;
+        // for (let partialResult of bubbleSort(items)) {
+        //     i++;
+        //     let sorted = [...partialResult.values()]
+        //     setTimeout(() => {
+        //         setItems(sorted);
+        //     }, i * 0.01)
+        // }
     }
 
     return (
         <div className="sorting-visualizer">
             <div className="bar-list">
                 {
-                    nodes.map((node, index) => <Bar key={index} sorted={node.sorted} current={node.current} value={node.value} />)
+                    items.map((item, index) => <Bar key={index} sorted={item.sorted} current={item.current} value={item.value} />)
                 }
             </div>
-            <Controls startingNodes={STARTING_NODES}
+            <Controls startingItemsNum={STARTING_ITEMS_NUM}
                 bubbleSortHandler={bubbleSortHandler}
-                setNodesHandler={setNodes}
+                setItemsHandler={setItems}
             />
         </div>
     )

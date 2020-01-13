@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 
-import {generateNodes} from '../helpers'
+import {generateItems} from '../helpers'
 
 type ControlsProps = {
     bubbleSortHandler: Function,
-    setNodesHandler: Function,
-    startingNodes: number
+    setItemsHandler: Function,
+    startingItemsNum: number
 }
 
-const Controls: React.FC<ControlsProps> = ({ bubbleSortHandler, setNodesHandler, startingNodes}) => {
+const Controls: React.FC<ControlsProps> = ({ bubbleSortHandler, setItemsHandler, startingItemsNum}) => {
 
-    const [nodeNum, setNodeNum] = useState(startingNodes);
+    const [itemNum, setNodeNum] = useState(startingItemsNum);
 
     return (
         <React.Fragment>
@@ -18,17 +18,17 @@ const Controls: React.FC<ControlsProps> = ({ bubbleSortHandler, setNodesHandler,
                 {/* Slider for generating bars.*/}
                 <input
                     type="range"
-                    min={startingNodes}
+                    min={startingItemsNum}
                     max="200"
-                    value={nodeNum}
+                    value={itemNum}
                     className="slider"
                     step="1"
-                    id="myRange"
+                    id="node-slider"
                     onChange={(event) => {
                         setNodeNum(Number(event.target.value))
-                        setNodesHandler(generateNodes(nodeNum))
+                        setItemsHandler(generateItems(itemNum))
                     }} />
-                <button onClick={() => bubbleSortHandler()}>Bubble Sort</button>
+                <button className="command-button" onClick={() => bubbleSortHandler()}>Bubble Sort</button>
             </div>
         </React.Fragment>
     )
