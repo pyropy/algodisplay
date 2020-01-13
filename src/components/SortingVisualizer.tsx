@@ -5,7 +5,7 @@ import Bar from './Bar'
 import Controls from './Controls'
 
 // Helper functions
-import bubbleSort from '../sorts'
+import { bubbleSort } from '../sorts'
 import { generateItems } from '../helpers'
 
 // Custom data types
