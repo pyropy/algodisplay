@@ -26,14 +26,6 @@ const SortingVisualizer: React.FC = () => {
 
     const bubbleSortHandler = () => {
         bubbleSort(items, setItems)
-        // let i = 0;
-        // for (let partialResult of bubbleSort(items)) {
-        //     i++;
-        //     let sorted = [...partialResult.values()]
-        //     setTimeout(() => {
-        //         setItems(sorted);
-        //     }, i * 0.01)
-        // }
     }
 
     return (
