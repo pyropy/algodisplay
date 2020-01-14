@@ -5,7 +5,6 @@ import Bar from './Bar'
 import Controls from './Controls'
 
 // Helper functions
-import { bubbleSort } from '../sorts'
 import { generateItems } from '../helpers'
 
 // Custom data types
@@ -13,20 +12,14 @@ import { ArrayItem } from '../types/ArrayItem'
 
 
 const SortingVisualizer: React.FC = () => {
-    const STARTING_ITEMS_NUM = 100;
+    const STARTING_ITEMS_NUM = 50;
 
     const tempItems: Array<ArrayItem> = []
     const [items, setItems] = useState(tempItems);
 
-    // TODO: Add sorted function
-
     useEffect(() => {
         setItems(generateItems(STARTING_ITEMS_NUM));
     }, [])
-
-    const bubbleSortHandler = () => {
-        bubbleSort(items, setItems)
-    }
 
     return (
         <div className="sorting-visualizer">
@@ -36,7 +29,7 @@ const SortingVisualizer: React.FC = () => {
                 }
             </div>
             <Controls startingItemsNum={STARTING_ITEMS_NUM}
-                bubbleSortHandler={bubbleSortHandler}
+                items={items}
                 setItemsHandler={setItems}
             />
         </div>

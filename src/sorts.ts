@@ -1,6 +1,6 @@
 import { ArrayItem } from './types/ArrayItem'
 
-export const bubbleSort = (items: Array<ArrayItem>, setItemsHandler: (itmes: Array<ArrayItem>) => void) => {
+export const bubbleSort = (items: Array<ArrayItem>, setItemsHandler: Function): void => {
     for (let i = 1; i < items.length; i++) {
         for (let j = 0; j < items.length - 1; j++) {
             if (items[j].value > items[j + 1].value) {

@@ -1,16 +1,22 @@
 import React, { useState } from 'react'
 
 import {generateItems} from '../helpers'
+import { bubbleSort } from '../sorts'
+import { ArrayItem } from '../types/ArrayItem';
 
 type ControlsProps = {
-    bubbleSortHandler: Function,
+    items: Array<ArrayItem>,
     setItemsHandler: Function,
     startingItemsNum: number
 }
 
-const Controls: React.FC<ControlsProps> = ({ bubbleSortHandler, setItemsHandler, startingItemsNum}) => {
+const Controls: React.FC<ControlsProps> = ({ items, setItemsHandler, startingItemsNum}) => {
 
     const [itemNum, setNodeNum] = useState(startingItemsNum);
+
+    const bubbleSortHandler = () => {
+        bubbleSort(items, setItemsHandler)
+    }
 
     return (
         <React.Fragment>
@@ -19,7 +25,7 @@ const Controls: React.FC<ControlsProps> = ({ bubbleSortHandler, setItemsHandler,
                 <input
                     type="range"
                     min={startingItemsNum}
-                    max="200"
+                    max="100"
                     value={itemNum}
                     className="slider"
                     step="1"
