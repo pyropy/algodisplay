@@ -1,6 +1,6 @@
 import { ArrayItem } from './types/ArrayItem'
 
-export const generateItems = (num: number): Array<ArrayItem> => {
+export const generateItems = (num: Number): Array<ArrayItem> => {
     let generatedNodes: Array<ArrayItem> = []
     for (let i = 0; i < num; i++) {
         let node: ArrayItem;

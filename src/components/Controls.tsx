@@ -1,40 +1,36 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-import {generateItems} from '../helpers'
-import { bubbleSort } from '../sorts'
-import { ArrayItem } from '../types/ArrayItem';
+import { generateItems } from '../helpers'
+import { bubbleSort } from '../algorithms/sortingAlgorithms'
+import { useItems } from '../contexts/ItemContext';
 
-type ControlsProps = {
-    items: Array<ArrayItem>,
-    setItemsHandler: Function,
-    startingItemsNum: number
-}
 
-const Controls: React.FC<ControlsProps> = ({ items, setItemsHandler, startingItemsNum}) => {
+const Controls: React.FC = () => {
 
-    const [itemNum, setNodeNum] = useState(startingItemsNum);
+    const { arrayItems, itemNum, setItems, setItemNum} = useItems();
 
     const bubbleSortHandler = () => {
-        bubbleSort(items, setItemsHandler)
+        bubbleSort(arrayItems, setItems);
     }
 
     return (
+
         <React.Fragment>
             <div className="commands">
                 {/* Slider for generating bars.*/}
                 <input
                     type="range"
-                    min={startingItemsNum}
-                    max="100"
-                    value={itemNum}
+                    min={50}
+                    max={100}
+                    value={itemNum as number}
                     className="slider"
                     step="1"
                     id="node-slider"
                     onChange={(event) => {
-                        setNodeNum(Number(event.target.value))
-                        setItemsHandler(generateItems(itemNum))
+                        setItemNum(Number(event.currentTarget.value))
+                        setItems(generateItems(itemNum))
                     }} />
-                <button className="command-button" onClick={() => bubbleSortHandler()}>Bubble Sort</button>
+                <button className="command-button" onClick={bubbleSortHandler}>Bubble Sort</button>
             </div>
         </React.Fragment>
     )
