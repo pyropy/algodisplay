@@ -1,24 +1,16 @@
 import { useEffect, useState } from "react";
-
-enum AlgorithmKey {
-  Undefined,
-  BubbleSort,
-}
+import { AlgorithmKey, Algorithm } from "../types";
 
 const bubbleSort = () => {
   console.log("BubbleSort");
 };
-
-type Algorithm = {
-  key: AlgorithmKey;
-  func: () => void;
-};
-
 function useAlgorithm(algorithmKey: AlgorithmKey): [Algorithm, any] {
   const [algorithm, setAlgorithm] = useState({
     key: algorithmKey,
     func: () => {},
   });
+
+  const [key, setAlgorithmKey] = useState(algorithmKey);
 
   useEffect(() => {
     function handleAlgorithmChange(algorithmKey: AlgorithmKey) {
@@ -32,14 +24,16 @@ function useAlgorithm(algorithmKey: AlgorithmKey): [Algorithm, any] {
         default:
           setAlgorithm({
             key: AlgorithmKey.Undefined,
-            func: () => {},
+            func: () => {
+              console.log("default");
+            },
           });
       }
     }
-    handleAlgorithmChange(algorithmKey);
-  }, [algorithmKey]);
+    handleAlgorithmChange(key);
+  }, [key]);
 
-  return [algorithm, setAlgorithm];
+  return [algorithm, setAlgorithmKey];
 }
 
-export { useAlgorithm, AlgorithmKey };
+export default useAlgorithm;

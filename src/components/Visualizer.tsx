@@ -1,13 +1,20 @@
 import React from "react";
-import { useAlgorithm, AlgorithmKey } from "../hooks/useAlgorithm";
+import AlgoPicker from "./AlgoPicker";
+import { useAlgorithm } from "../hooks";
+import { AlgorithmKey } from "../types";
 
 const Visualiser = () => {
-  const [algorithm] = useAlgorithm(AlgorithmKey.BubbleSort);
+  const [algorithm, setAlgorithm] = useAlgorithm(AlgorithmKey.Undefined);
+
+  const algorithmChange = (algorithmKey: string) => {
+    setAlgorithm(algorithmKey);
+  };
 
   return (
     <div>
       <div>Visualise Alrogithm Outputs Here</div>
       <button onClick={algorithm.func}>Algorithmize</button>
+      <AlgoPicker handleChange={algorithmChange} />
     </div>
   );
 };
