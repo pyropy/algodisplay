@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { AlgorithmKey, Algorithm } from "../types";
+import * as algorithms from '../algorithms';
 
-const bubbleSort = () => {
-  console.log("BubbleSort");
-};
+
 function useAlgorithm(algorithmKey: AlgorithmKey): [Algorithm, any] {
   const [algorithm, setAlgorithm] = useState({
     key: algorithmKey,
-    func: () => {},
+    func: algorithms.bubbleSort
   });
 
   const [key, setAlgorithmKey] = useState(algorithmKey);
@@ -18,15 +17,13 @@ function useAlgorithm(algorithmKey: AlgorithmKey): [Algorithm, any] {
         case AlgorithmKey.BubbleSort:
           setAlgorithm({
             key: AlgorithmKey.BubbleSort,
-            func: bubbleSort,
+            func: algorithms.bubbleSort,
           });
           break;
         default:
           setAlgorithm({
-            key: AlgorithmKey.Undefined,
-            func: () => {
-              console.log("default");
-            },
+            key: AlgorithmKey.BubbleSort,
+            func: algorithms.bubbleSort,
           });
       }
     }

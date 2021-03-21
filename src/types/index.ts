@@ -1,13 +1,18 @@
 enum AlgorithmKey {
-  Undefined = 'undefined',
+  Default = 'default',
   BubbleSort = 'bubbleSort',
 }
 
-type Algorithm = {
-  key: AlgorithmKey;
-  func: () => void;
-};
+type SortableValue = {
+  value: number,
+  sorted: boolean,
+  index: number,
+}
 
+type Algorithm = {
+  key: AlgorithmKey,
+  func: (values: SortableValue[]) => SortableValue[],
+};
 
 export {
     AlgorithmKey,
@@ -15,4 +20,5 @@ export {
 
 export type {
     Algorithm,
+    SortableValue
 }

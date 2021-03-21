@@ -12,7 +12,6 @@ const AlgoPicker = ({ handleChange }: Props) => {
   return (
     <div>
       <select id="algorithms" onChange={onChange}>
-        <option value="undefined">Not Selected</option>
         <option value="bubbleSort">Bubble Sort</option>
       </select>
     </div>
