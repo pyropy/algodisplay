@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import Algodisplay from '../pages/Algodisplay';
 
 test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
+  render(<Algodisplay />);
+  const linkElement = screen.getByText(/Nothing Here/i);
   expect(linkElement).toBeInTheDocument();
 });
