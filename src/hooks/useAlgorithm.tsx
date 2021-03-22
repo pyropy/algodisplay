@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { AlgorithmKey, Algorithm } from "../types";
-import * as algorithms from '../algorithms';
-
+import * as algorithms from "../algorithms";
 
 function useAlgorithm(algorithmKey: AlgorithmKey): [Algorithm, any] {
   const [algorithm, setAlgorithm] = useState({
     key: algorithmKey,
-    func: algorithms.bubbleSort
+    func: algorithms.bubbleSort,
   });
 
   const [key, setAlgorithmKey] = useState(algorithmKey);

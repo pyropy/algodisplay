@@ -15,6 +15,7 @@ code {
 
 .bar-list {
   display: flex;
+  flex-direction: row;
 }
 
 .bar {

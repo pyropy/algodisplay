@@ -1,24 +1,20 @@
 enum AlgorithmKey {
-  Default = 'default',
-  BubbleSort = 'bubbleSort',
+  Default = "default",
+  BubbleSort = "bubbleSort",
 }
 
 type SortableValue = {
-  value: number,
-  sorted: boolean,
-  index: number,
-}
-
-type Algorithm = {
-  key: AlgorithmKey,
-  func: (values: SortableValue[]) => SortableValue[],
+  value: number;
+  sorted: boolean;
+  current: boolean;
+  index: number;
 };
 
-export {
-    AlgorithmKey,
-}
+type Algorithm = {
+  key: AlgorithmKey;
+  func: (values: SortableValue[]) => SortableValue[][];
+};
 
-export type {
-    Algorithm,
-    SortableValue
-}
+export { AlgorithmKey };
+
+export type { Algorithm, SortableValue };
