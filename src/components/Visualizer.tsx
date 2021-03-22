@@ -1,19 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import AlgoPicker from "./AlgoPicker";
 import ValueVisualizer from "./ValueVisualizer";
 import { useAlgorithm } from "../hooks";
-import { AlgorithmKey, SortableValue } from "../types";
+import { AlgorithmKey } from "../types";
 import { generateValues } from "../helpers";
 
 
 const Visualiser = () => {
   const [algorithm, setAlgorithm] = useAlgorithm(AlgorithmKey.Default);
-  const tempItems: SortableValue[] = [];
-  const [values, setValues] = useState(tempItems);
-
-  useEffect(() => {
-    setValues(generateValues(50));
-  }, [setValues]);
+  const [values, setValues] = useState(generateValues(50));
 
   const algorithmChange = (algorithmKey: string) => {
     setAlgorithm(algorithmKey);
